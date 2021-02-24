@@ -1,0 +1,34 @@
+Game.Players.LocalPlayer.PlayerGui.MainGUI.TeleportEffect:Destroy()
+Game.Workspace.Pyramid.Tele.Core2.CanCollide = false
+Game.Workspace.Pyramid.Tele.Core2.Transparency = 1
+Game.Workspace.Pyramid.Tele.Core2.CFrame = Game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+wait()
+Game.Workspace.Pyramid.Tele.Core2.CFrame = CFrame.new(1231.14185, 51051.2344, 318.096191)
+Game.Workspace.Pyramid.Tele.Core2.Transparency = 0
+Game.Workspace.Pyramid.Tele.Core2.CanCollide = true
+wait(0.50)
+Game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-560.835022, 6.02300262, 407.252197)
+wait(3)
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    if v.Name == "TEC9" then v.Parent = game:GetService("Players").LocalPlayer.Character
+    end
+end
+wait(2)
+while game:GetService("RunService").RenderStepped:wait() do
+ pcall(function()
+ local A_1 = "SpawnVehicle"
+ local A_2 = "Helicopter"
+ local Event = game:GetService("ReplicatedStorage").Event
+ Event:FireServer(A_1, A_2)
+ repeat
+   game:GetService("RunService").RenderStepped:wait()
+ until  workspace.ObjectSelection:FindFirstChild(game.Players.LocalPlayer.Name .. "'s Vehicle")
+ for i = 1, 17 do
+   local A_1 = "VR"
+   local A_2 = workspace.ObjectSelection:FindFirstChild(game.Players.LocalPlayer.Name .. "'s Vehicle").Body.Body
+   local Event = game:GetService("ReplicatedStorage").Event
+   Event:FireServer(A_1, A_2)
+ end
+ wait()
+ end)
+end
