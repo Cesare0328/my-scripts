@@ -1,0 +1,9 @@
+game:GetService"RunService".RenderStepped:Connect(function()
+local args = {
+    [1] = CFrame.new(Vector3.new(-1034.5393066406, -24.843626022339, 395.05087280273), Vector3.new(-0.13089309632778, 0.34001129865646, -0.931267619133)),
+    [2] = CFrame.new(Vector3.new(-1022.4039306641, -15.512422561646, 428.875), Vector3.new(0.25891074538231, 0.175147742033, 0.94988864660263)),
+    [3] = 200.99999687076 --speed of the ball when you throw (dont increase or lower it).
+}
+
+game:GetService("Players").LocalPlayer.Character.Snowball.ThrowSnowball:InvokeServer(unpack(args))
+end)
