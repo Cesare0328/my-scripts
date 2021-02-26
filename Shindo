@@ -1,0 +1,9 @@
+game:GetService"RunService".RenderStepped:Connect(function()
+local args = {
+    [1] = "mouse1",
+    [2] = true
+}
+
+game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+
+end)
