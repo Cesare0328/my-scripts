@@ -1,0 +1,10 @@
+for i = 1, 10 do
+game:GetService"RunService".RenderStepped:Connect(function()
+local args = {
+    [1] = "SpawnVehicle",
+    [2] = "Camaro"
+}
+
+game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
+end)
+end
