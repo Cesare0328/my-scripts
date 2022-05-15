@@ -1,0 +1,22 @@
+if getgenv().SuperPower == "Frostbite" then 
+    getgenv().SuperPower = "Chill"
+end
+if getgenv().SuperPower == "Hotrod" then 
+    getgenv().SuperPower = "TheFlash"
+end
+if getgenv().SuperPower == "Voltron" then 
+    getgenv().SuperPower = "Tesla"
+end
+if getgenv().SuperPower == "Archer" then 
+    getgenv().SuperPower = "Archer"
+end
+if getgenv().SuperPower == "Vanta" then 
+    getgenv().SuperPower = "Shadow"
+end
+if getgenv().SuperPower == "Proton" then 
+    getgenv().SuperPower = "LaserPower"
+end
+local newvar = Instance.new("StringValue")
+newvar.Name = "SuperPower"
+newvar.Value = getgenv().SuperPower
+newvar.Parent = game:GetService("Players").LocalPlayer.Character
