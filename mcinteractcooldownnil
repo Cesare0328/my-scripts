@@ -1,0 +1,23 @@
+local functioname = "HandleSelection"
+local functionn 
+
+for i , v in pairs (getgc()) do
+    if type(v) == "function" then
+        if getinfo(v).name == functioname then
+            functionn = v
+    end
+end
+end
+
+
+setconstant(functionn, 105, "nil")
+setconstant(functionn, 30, 0)
+setconstant(functionn, 479, 0)
+setconstant(functionn, 295, 0)
+setconstant(functionn, 296, 0)
+setconstant(functionn, 348, 0)
+setconstant(functionn, 377, 0)
+setconstant(functionn, 397, 0)
+setconstant(functionn, 402, 0)
+setconstant(functionn, 513, 0)
+setconstant(functionn, 299, 0)
