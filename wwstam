@@ -1,0 +1,25 @@
+local functioname = "Boost"
+local functionname2 = "LowerStamina"
+local functionn
+local functionn2
+
+for i , v in pairs (getgc()) do
+    if type(v) == "function" then
+        if getinfo(v).name == functioname then
+            functionn = v
+    end
+end
+end
+for i , v in pairs (getgc()) do
+    if type(v) == "function" then
+        if getinfo(v).name == functionname2 then
+            functionn2 = v
+    end
+end
+end
+
+
+setconstant(functionn2, 3, "nil")
+setconstant(functionn, 6, 0)
+setconstant(functionn, 7, 0)
+setconstant(functionn, 21, 0)
