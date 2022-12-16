@@ -22,11 +22,11 @@ end)()
 task.wait(0.1)
 for i, v in pairs(game:GetService("Workspace"):GetDescendants()) do
     if v.Name:find("Chest") and v:IsA("Part") and v.Parent == game:GetService("Workspace") and v:FindFirstChild("TouchInterest") then
-        for i = 1, 12 do
+        for i = 1, 5 do
         pcall(function()
         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = v.Position
         end)
-        task.wait(0.05)
+        task.wait(0.02)
         end
         task.wait(0.2)
     end
@@ -64,11 +64,11 @@ end
 end)()
 for i, v in pairs(game:GetService("Workspace"):GetDescendants()) do
     if v.Name:find("Chest") and v:IsA("Part") and v.Parent == game:GetService("Workspace") and v:FindFirstChild("TouchInterest") then
-        for i = 1, 12 do
+        for i = 1, 5 do
         pcall(function()
         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = v.Position
         end)
-        task.wait(0.05)
+        task.wait(0.02)
         end
         task.wait(0.2)
     end
