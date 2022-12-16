@@ -46,7 +46,6 @@ local function ServerHop()
         end
     end
 end
-task.wait(1)
 while task.wait(0.1) do
     ServerHop()
 end
@@ -88,7 +87,6 @@ local function ServerHop()
         end
     end
 end
-task.wait(1)
 while task.wait(0.1) do
     ServerHop()
 end
