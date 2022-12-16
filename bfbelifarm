@@ -1,0 +1,95 @@
+repeat wait() until game.Players.LocalPlayer and game.Players.LocalPlayer:FindFirstChild("PlayerGui") and game.Players.LocalPlayer.PlayerGui:FindFirstChild("Main") and game.Players.LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")
+
+coroutine.wrap(function()
+local prompt = assert(game:GetService("CoreGui"):FindFirstChild("promptOverlay", true))
+prompt.ChildAdded:Connect(function(child)
+   assert(child, typeof(child) == "Instance" and child.Name == "ErrorPrompt" and child.ClassName == "Frame" and game:GetService("RunService").RenderStepped:Connect(function()
+    game:GetService("TeleportService"):Teleport(game.PlaceId, player)
+end))
+end)
+end)()
+
+if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
+task.wait(0.2)
+coroutine.wrap(function()
+while task.wait() do
+pcall(function()
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(120), 0)
+end)
+end
+end)()
+task.wait(0.1)
+for i, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+    if v.Name:find("Chest") or ("Flower") and v:IsA("Part") and v.Parent == game:GetService("Workspace") then
+        for i = 1, 12 do
+        pcall(function()
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = v.Position
+        end)
+        task.wait(0.05)
+        end
+        task.wait(0.2)
+    end
+end
+task.wait()
+local a = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
+local b = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100&cursor="..a.nextPageCursor))
+local c = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100&cursor="..b.nextPageCursor))
+local d = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100&cursor="..c.nextPageCursor))
+local e = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100&cursor="..d.nextPageCursor))
+
+local function ServerHop()
+    table.sort(e.data, function (a, b) return a.playing < b.playing end)
+    for i,v in pairs(e.data) do
+        if v.maxPlayers > v.playing and v.id ~= game.JobId then
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, v.id)
+        end
+    end
+end
+task.wait(1)
+while task.wait(0.1) do
+    ServerHop()
+end
+elseif not game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+    task.wait(0.1)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
+task.wait(0.2)
+coroutine.wrap(function()
+while task.wait() do
+pcall(function()
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(120), 0)
+end)
+end
+end)()
+for i, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+    if v.Name:find("Chest") or ("Flower") and v:IsA("Part") and v.Parent == game:GetService("Workspace") then
+        for i = 1, 12 do
+        pcall(function()
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = v.Position
+        end)
+        task.wait(0.05)
+        end
+        task.wait(0.2)
+    end
+end
+task.wait()
+local a = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
+local b = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100&cursor="..a.nextPageCursor))
+local c = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100&cursor="..b.nextPageCursor))
+local d = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100&cursor="..c.nextPageCursor))
+local e = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100&cursor="..d.nextPageCursor))
+
+local function ServerHop()
+    table.sort(e.data, function (a, b) return a.playing < b.playing end)
+    for i,v in pairs(e.data) do
+        if v.maxPlayers > v.playing and v.id ~= game.JobId then
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, v.id)
+        end
+    end
+end
+task.wait(1)
+while task.wait(0.1) do
+    ServerHop()
+end
+end
