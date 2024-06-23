@@ -102,7 +102,9 @@ local function getRbxApi()
 	}
 
 	local function sortAlphabetic(t, property)
-		return true
+		table_sort(t,function(x,y)
+			return x[property] < y[property]
+		end)
 	end
 
 	local function getProperties(classInstance, ClassName, RbxApi)
@@ -1543,9 +1545,7 @@ local function checkForDupe(prop,props)
 end
 
 local function sortProps(t)
-	table_sort(t, function(x,y) 
-		return x.propertyData.Name < y.propertyData.Name 
-	end)
+	return true
 end
 
 local function getTableLength(t)
