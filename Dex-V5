@@ -449,7 +449,7 @@ local Specials = {
 		for A, B in next, getreg() do
 			if type(B) == "function" and islclosure(B) and iselectronfunction(B) then
 				local C = rawget(getfenv(B), "script")
-				if C == InitScript and getconstant(B, 1) == "table" and getconstant(B, 2) == "insert" then
+				if C == InitScript then
 					return getupvalue(B, 1)
 				end
 			end
