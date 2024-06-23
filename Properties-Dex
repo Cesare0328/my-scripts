@@ -102,9 +102,7 @@ local function getRbxApi()
 	}
 
 	local function sortAlphabetic(t, property)
-		warn(property)
 		table_sort(t,function(x,y)
-			print(x .. " " .. y)
 			return x[property] < y[property]
 		end)
 	end
@@ -178,12 +176,14 @@ local function getRbxApi()
 				Tags = PropertyData.Tags
 			end
 			table_insert(Properties, {
-				ValueType = Value_Type,
-				CurrentValue = Value,
-				Name = Property,
-				Binary = Binary[Property] and true,
-				Tags = Tags,
-				Class = ClassName
+				data = {
+					ValueType = Value_Type,
+					CurrentValue = Value,
+					Name = Property,
+					Binary = Binary[Property] and true,
+					Tags = Tags,
+					Class = ClassName
+				}
 			})
 		end
 		for prop,_ in pairs(Blacklist) do
@@ -194,6 +194,7 @@ local function getRbxApi()
 			end
 		end
 		sortAlphabetic(Properties, "Name")
+		
 		return Properties
 	end
 
