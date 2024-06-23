@@ -444,7 +444,7 @@ local Specials = {
 	fireclickdetector = fireclickdetector,
 	firetouchinterest = firetouchinterest,
 	fireproximityprompt = fireproximityprompt,
-	getpropertylist = getupvalue(getprops,  2) or getprops,
+	getpropertylist = getprops,
 	getinstancelist = (function()
 		for A, B in next, getreg() do
 			if type(B) == "function" and islclosure(B) and is_synapse_function(B) then
