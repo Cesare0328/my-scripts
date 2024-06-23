@@ -102,9 +102,7 @@ local function getRbxApi()
 	}
 
 	local function sortAlphabetic(t, property)
-		table_sort(t,function(x,y)
-			return true -- ¯\_(ツ)_/¯
-		end)
+		return true
 	end
 
 	local function getProperties(classInstance, ClassName, RbxApi)
