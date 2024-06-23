@@ -444,7 +444,7 @@ local Specials = {
 	fireclickdetector = fireclickdetector,
 	firetouchinterest = firetouchinterest,
 	fireproximityprompt = fireproximityprompt,
-	getpropertylist = getprops,
+	getpropertylist = getproperties,
 	getinstancelist = (function()
 		for A, B in next, getreg() do
 			if type(B) == "function" and islclosure(B) and iselectronfunction(B) then
