@@ -1,4 +1,4 @@
-return [[-- < Services > --
+-- < Services > --
 local HttpService = cloneref(game:GetService("HttpService"))
 -- < Aliases > --
 local bit32_band = bit32.band
@@ -474,4 +474,4 @@ local Specials = {
 
 function GetSpecials_Bindable.OnInvoke()
 	return Specials
-end]]
+end
