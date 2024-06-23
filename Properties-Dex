@@ -102,8 +102,9 @@ local function getRbxApi()
 	}
 
 	local function sortAlphabetic(t, property)
-		local property = tonumber(property)
+		warn(property)
 		table_sort(t,function(x,y)
+			print(x .. " " .. y)
 			return x[property] < y[property]
 		end)
 	end
