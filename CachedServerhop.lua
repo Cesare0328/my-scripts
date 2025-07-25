@@ -65,7 +65,7 @@ if isfile("Servers.JSON") then
     end)
     if success and JSONData then
         if JSONData.gameId ~= game.PlaceId then
-            error("Game mismatch from cache, remaking cache for --> " .. game.PlaceId)
+            warn("Game mismatch from cache, remaking cache for --> " .. game.PlaceId)
             SetMainPage()
         end
         if JSONData.data and #JSONData.data >= 1 then
