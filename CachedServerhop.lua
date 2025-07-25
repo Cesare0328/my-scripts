@@ -2,6 +2,7 @@ local API, HttpService, TeleportService, CoreGui = nil, game:GetService("HttpSer
 local RemoveErrorPrompts = true --prevents error messages from popping up.
 local IterationSpeed = 0.25 --speed in which next server is picked for teleport (the higher it is the slower the teleports but more likely to work).
 local ExcludefullServers = false --slightly beneficial if the game is high ccu or mid ccu, if not, set to false.
+local SaveTeleportAttempts = false --saves every teleports that are attempted in jobid to "Attempts.txt" file
 
 local function EncodeToFile(JSONString)
 local success, JSONData = pcall(function()
@@ -43,7 +44,9 @@ local function StartTeleport()
                 return HttpService:JSONEncode(JSONData)
             end)
             writefile("Servers.JSON", encoded)
-            appendfile("Attempts.txt", JobId .. "\n")
+            if SaveTeleportAttempts then
+                appendfile("Attempts.txt", JobId .. "\n")
+            end
             TeleportService:TeleportToPlaceInstance(game.PlaceId, JobId, game.Players.LocalPlayer)
             task.wait(IterationSpeed)
         end
