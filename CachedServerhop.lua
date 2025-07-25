@@ -43,6 +43,7 @@ local function StartTeleport()
                 return HttpService:JSONEncode(JSONData)
             end)
             writefile("Servers.JSON", encoded)
+            appendfile("Attempts.txt", JobId .. "\n")
             TeleportService:TeleportToPlaceInstance(game.PlaceId, JobId, game.Players.LocalPlayer)
             task.wait(IterationSpeed)
         end
