@@ -1,7 +1,7 @@
 local API, HttpService, TeleportService, CoreGui = nil, game:GetService("HttpService"), game:GetService("TeleportService"), game:GetService("CoreGui");
 local RemoveErrorPrompts = true --prevents error messages from popping up.
-local IterationSpeed = 0.5 --speed in which next server is picked for teleport (the higher it is the slower the teleports but more likely to work).
-local ExcludefullServers = true --slightly beneficial if the game is high ccu or mid ccu, if not, set to false.
+local IterationSpeed = 0.25 --speed in which next server is picked for teleport (the higher it is the slower the teleports but more likely to work).
+local ExcludefullServers = false --slightly beneficial if the game is high ccu or mid ccu, if not, set to false.
 
 local function EncodeToFile(JSONString)
 local success, JSONData = pcall(function()
