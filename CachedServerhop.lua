@@ -10,10 +10,10 @@ local success, JSONData = pcall(function()
 end)
 if success and JSONData.data then
     JSONData.gameId = game.PlaceId
-    local sucess, encoded = pcall(function()
+    local success, encoded = pcall(function()
         return HttpService:JSONEncode(JSONData)
     end)
-    if sucess then
+    if success then
         writefile("Servers.JSON", encoded)
     else
         error("Failed to encode JSON string.")
